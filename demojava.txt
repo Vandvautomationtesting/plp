@@ -1,0 +1,223 @@
+package com.cg.module4pagefactory;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+
+public class Module4PageFactory {
+	WebDriver driver;
+	public Module4PageFactory(WebDriver driver)
+	{
+		this.driver=driver;
+	}
+	//for my account drop down
+	@FindBy(className="dropdown")
+	WebElement MyAccount;
+	
+	// register xpath
+	@FindBy(xpath=".//*[@id='top-links']/ul/li[2]/ul/li[1]/a")
+	WebElement Register_click;
+	
+	@FindBy(id="input-firstname")
+	WebElement FirstName;
+	@FindBy(name="lastname")
+	WebElement lastName;
+	
+	@FindBy(id="input-email")
+	WebElement Email;
+
+	@FindBy(name="telephone")
+	WebElement MobileNo;
+
+	@FindBy(xpath=".//*[@id='input-password']")
+	WebElement Password;
+
+	@FindBy(id="input-confirm")
+	WebElement ConfirmPassword;
+	
+	
+	//verifying subscribe radio button on page
+	@FindBy(xpath=".//*[@id='content']/form/fieldset[3]/div/div/label[2]")
+	WebElement Noradio;
+	//searchBox6.click();
+	
+	//clicking on agree policy checkbox
+	@FindBy(name="agree")
+	WebElement agree;
+	//searchBox7.click();
+	
+	//clicking on the continue button
+	@FindBy(xpath=".//*[@id='content']/form/div/div/input[2]")
+	WebElement Continue;
+	
+	//clicking on 'phones & PDA's' option
+	@FindBy(xpath=".//*[@id='menu']/div[2]/ul/li[6]/a")
+	WebElement phonesOption;
+	
+	//clicking on /HTC TOUcH HD' icon
+	@FindBy(xpath=".//*[@id='content']/div[2]/div[1]/div/div[1]/a/img")
+	WebElement TouchHDC;
+
+	
+	//click on back button of a browser
+	//driver.navigate().back();
+	
+	//click on 'Add to cart' button for HTC Touch HD Mobile
+	@FindBy(xpath=".//*[@id='content']/div[2]/div[1]/div/div[2]/div[2]/button[1]")
+	WebElement AddToCart;
+	
+	
+	//clicking on 'Brands' under 'Extras'
+	@FindBy(xpath="html/body/footer/div/div/div[3]/ul/li[1]/a")
+	WebElement Brands;
+	
+	
+	//clicking on C 'canon' option
+	@FindBy(xpath=".//*[@id='content']/div[2]/div/a")
+	WebElement Canon;
+	
+	
+	
+	//click on add to wish list option'
+	@FindBy(xpath=".//*[@id='content']/div[2]/div/div/div[2]/div[2]/button[2]")
+	WebElement AddWishList;
+	
+	
+	//click 'wish list' option under 'My accounts'
+	@FindBy(xpath="html/body/footer/div/div/div[4]/ul/li[3]/a")
+	WebElement ClickWishList;
+	
+
+	//clicking on 'continue' button
+	@FindBy(xpath=".//*[@id='content']/div[2]/div/a")
+	WebElement ClickContinue;
+	
+	
+	public void clickMyAccount() throws InterruptedException
+	{
+		MyAccount.click();
+	}
+ public void clickRegister() throws InterruptedException
+	{
+	 Register_click.click();
+	
+	}
+ public void typeFirstName(String strNFname)
+	{
+	 FirstName.sendKeys(strNFname);
+	}	
+ public void typeLastName(String strNLname)
+	{
+	 lastName.sendKeys(strNLname);
+	}
+ public void typeEmail(String strEmail)
+	{
+	 Email.sendKeys(strEmail);
+	}
+ public void typePhone(String strMob)
+	{
+	 MobileNo.sendKeys(strMob);
+	}
+ public void typePassword(String strNPwd)
+	{
+		Password.sendKeys(strNPwd);
+	}
+ public void typeConfimrPassword(String strNConfirmPwd)
+	{
+	 ConfirmPassword.sendKeys(strNConfirmPwd);
+	}
+ public void selectSubscribe()
+	{
+	 Noradio.click();
+	}
+ public void clickCheckBox()
+	{
+	 agree.click();
+	}
+ public void clickContinue()
+	{
+		Continue.click();
+	}
+ public void clickPhonesOption()
+	{
+	 phonesOption.click();
+	}
+ 
+
+public void clickTouchHD()
+{
+
+	TouchHDC.click();
+
+}	
+
+public void clickAddToCart()
+{
+	AddToCart.click();
+}
+
+public void clickBrands()
+{
+	Brands.click();
+}
+public void clickCannon()
+{
+	Canon.click();
+}
+public void clickaddWishList()
+{
+	AddWishList.click();
+}
+public void clickWishList()
+{
+ClickWishList.click();
+}
+public void clickContinuelast()
+{
+	ClickContinue.click();
+}
+
+
+
+
+public String getPageTitle()
+{
+	return driver.getTitle();
+}	
+public void HomePageOnwebsite () throws InterruptedException{
+
+	clickMyAccount();
+	clickRegister();
+}
+
+
+public void RegiterOnwebsite(String strNFname,String strNLname,String strEmail,String strMob,String strNPwd,String strNConfirmPwd) 
+{
+	typeFirstName(strNFname);
+	typeLastName(strNLname);
+	 typeEmail(strEmail);
+	 typePhone(strMob);
+	 typePassword(strNPwd);
+	 typeConfimrPassword(strNConfirmPwd);
+	 selectSubscribe();
+	 clickCheckBox();
+	 clickContinue();
+	 clickPhonesOption();
+	 clickTouchHD();
+	 clickAddToCart();
+	 clickBrands();
+	 driver.navigate().back();
+	 clickAddToCart();
+	 clickBrands();
+	 clickCannon();
+	 clickWishList();
+}
+}
+	 
+	 
+	
+
+
+

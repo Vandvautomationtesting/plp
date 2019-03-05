@@ -1,0 +1,36 @@
+package com.cg.testPackage;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.cg.module4pagefactory.Module4PageFactory;
+
+
+
+
+public class Module4TestNG {
+	WebDriver driver;
+	Module4PageFactory opencartPage;
+	static String driverPath="C:\\Users\\kikavya\\Desktop\\Selenium Libraries\\chromedriver_win32\\chromedriver.exe";
+	
+	@BeforeTest
+	public void Setup()
+	{
+		System.setProperty("webdriver.chrome.driver",driverPath);
+		driver =new ChromeDriver();
+		driver.get("http://demo.opencart.com/");
+		driver.manage().window().maximize();
+	}
+	
+	@Test
+	public void VerifyLoginRegister1()
+	{
+		opencartPage=new Module4PageFactory(driver);
+		PageFactory.initElements(driver,opencartPage);
+		opencartPage.RegiterOnwebsite("kavya","killani","killanikavya56@gmail.com","76745678980","kavy65@32","kavy65@32");
+		//driver.navigate().to("file:///C:/Users/saidara/Desktop/LAB-10%20VnV-AutomationBatch-12th-Dec2018%E2%80%9327/Training%20Material/Module-04/SampleProject_VV%20AT%20M4/VV%20AT%20M4_MPT%20Sample%20Que/registration.html");
+	}
+}

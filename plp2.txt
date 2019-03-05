@@ -1,0 +1,139 @@
+package com.cg.pageFactory_PLP_Paytm;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+
+public class pagefactory_PLP_paytm {
+
+		WebDriver driver;
+		public pagefactory_PLP_paytm(WebDriver driver)
+		{
+			this.driver=driver;
+		}
+		
+		@FindBy(className="F7TQ")
+		WebElement Download_App;
+		
+		
+		@FindBy(xpath="(//button[contains(text(),'Send Link')])")
+		WebElement send_link;
+		
+		@FindBy(className="_3ac-")
+		WebElement login;
+		
+		
+		@FindBy(tagName="iframe")
+		WebElement iframe;
+		
+
+		@FindBy(xpath="//div//span[@screen-name='auth-init/QRlogin']")
+		WebElement login_link;
+		
+		@FindBy(xpath="//li[@class='selected ng-binding']")
+		WebElement signIn_link;
+		
+		@FindBy(name="username")
+		WebElement userName;
+		
+		@FindBy(name="password")
+		WebElement password;
+		
+		@FindBy(xpath="//a[@class='showPassword']")
+		WebElement showPassword;
+		
+		@FindBy(xpath="(//a[contains(text(),'Hide')])")
+		WebElement hide;
+		
+		@FindBy(xpath="(//span[contains(text(),'Login Securely')])")
+		WebElement Login_Securely;
+		
+		@FindBy(xpath="//a[@title='Close']")
+		WebElement closeButton;
+		
+		@FindBy(xpath="//div[@class='mainContainer _1DB1']//div[@class='_1JVU _3pq_']//span")
+		WebElement slider_right;
+		
+		@FindBy(xpath="//a[@href='https://paytm.com/amusement-parks']")
+		WebElement Amusement_Parks;
+		
+
+		@FindBy(xpath="//i[@class='icon-location']")
+		WebElement cities;
+		
+		@FindBy(xpath="//input[@placeholder='Enter a city name']")
+		WebElement enter_mumbai;
+		
+		@FindBy(xpath="//a[@href='/amusement-parks/mumbai']")
+		WebElement click_mumbai;
+		
+		@FindBy(xpath="//i[@class='icon-top']")
+		WebElement scroll_button;
+		
+
+		@FindBy(xpath="//i[@class='icon-hamburger _2eUq']")
+		WebElement shop_by_category;
+		
+		@FindBy(xpath="//a[@href='https://paytm.com/shop/h/electronics']")
+		WebElement electronics;
+
+		@FindBy(xpath="//a[@href='/mobile-accessories-clpid-326?src=store&use_sf=1']")
+		WebElement Mobile_Accessories;
+		
+		@FindBy(xpath="//a[@href='/mobile-holders-glpid-24383?use_mw=1&src=store']")
+		WebElement Mobile_holders;
+		
+		@FindBy(xpath="//div[@role='slider' and @class='rc-slider-handle rc-slider-handle-1']")
+		WebElement Slider;
+		
+		@FindBy(xpath="//span[@class='_34iq bq4I']")
+		WebElement clear;
+		
+		@FindBy(xpath="//span[text()='Charging Holder']")
+		WebElement Charging_Holder;
+		
+		@FindBy(xpath="//span[@class='_34iq bq4I']")
+		WebElement clear1;
+		
+		@FindBy(xpath="//a[@class='_8vVO']")
+		WebElement select;
+		
+		@FindBy(xpath="//span[@class='_2oRS']")
+		WebElement name;
+		
+		@FindBy(xpath="//i[@class='iconWishlist']")
+		WebElement Wishlist;
+		
+		public void DownloadApp(String download) throws InterruptedException
+		{
+			Actions action = new Actions(driver);		       
+	        action.moveToElement(Download_App);
+	        Download_App.sendKeys(download);
+	        action.build().perform();
+	        Thread.sleep(2000);
+			
+		}
+		public void sendLink_click()
+		{
+			send_link.click();
+		}
+		public void login_click()
+		{
+			login.click();
+		}
+		
+		
+		
+		
+		
+		public void typeFirstName(String strNFname)
+		{
+		 FirstName.sendKeys(strNFname);
+		}	
+		
+		
+	}
+
+

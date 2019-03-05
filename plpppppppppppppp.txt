@@ -1,0 +1,233 @@
+package com.cg.plppaytm;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Window;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class PaytmPLPMain {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+		
+				//Loading the Browser
+				System.setProperty("webdriver.chrome.driver","C:\\Users\\kikavya\\Desktop\\Selenium Libraries\\chromedriver_win32\\chromedriver.exe");
+				WebDriver driver = new ChromeDriver();
+				
+				
+				//initialize wait
+				WebDriverWait wait = new WebDriverWait(driver, 30);
+				//Loading Paytm Website
+				driver.get("https://paytm.com/");
+				Thread.sleep(2000);
+				
+				//Verify Page Title
+				System.out.println("The page title is: " + driver.getTitle());
+				driver.manage().window().maximize();
+				
+			//	String windowHandle =driver.getWindowHandle();
+				
+				
+				//mouse over on 'Download App' link
+				WebElement element = driver.findElement(By.className("F7TQ"));				 
+		        Actions action = new Actions(driver);		       
+		        action.moveToElement(element);
+		        action.sendKeys("9930490266");
+		        action.build().perform();
+		        Thread.sleep(2000);
+		        
+		        //click on 'send link' button
+		        driver.findElement(By.xpath("(//button[contains(text(),'Send Link')])")).click();
+		        Thread.sleep(2000);
+		        
+		        //click on login
+		        driver.findElement(By.className("_3ac-")).click();
+		        Thread.sleep(2000);
+		        
+		       WebElement iFrame = driver.findElement(By.tagName("iframe"));
+		       driver.switchTo().frame(iFrame);
+		        driver.getPageSource();
+		        
+		       // driver.switchTo().frame("/v1/api/login?isIframe=true&theme=mp-web");
+		        Thread.sleep(5000);
+		        //navigating to login frame
+		       //driver.navigate().to("https://accounts.paytm.com/oauth2/authorize?theme=mp-web&redirect_uri=https%3A%2F%2Fpaytm.com%2Fv1%2Fapi%2Fauthresponse&is_verification_excluded=false&client_id=paytm-web-secure&type=web_server&scope=paytm&response_type=code#/login");
+		   
+		       //clicking on the login/sign up using mobile number link in the login frame
+		    // driver.findElement(By.xpath("(//span[contains(text(),'Login/Signup with mobile number and password')])")).click();
+		       WebElement loginLink = driver.findElement(By.xpath("//div//span[@screen-name='auth-init/QRlogin']"));
+		       wait.until(ExpectedConditions.visibilityOf(loginLink));
+		       loginLink.click();////span[@user-actions='login_clicked']
+		    //   driver.findElement(By.xpath("//span[@event-action='login_clicked']")).click();
+		        
+		       //clicking on the 'sign in' link
+		       driver.findElement(By.xpath("//li[@class='selected ng-binding']")).click();
+		       Thread.sleep(2000);
+		      
+		       //entering the 'Registered mobile number' in the username field
+		       WebElement element1 = driver.findElement(By.name("username"));		       
+		       element1.click();
+		       element1.sendKeys("6300535258");
+		       Thread.sleep(2000);
+		        
+		       //entering 'password' in the password field 
+		       WebElement element2 = driver.findElement(By.name("password"));
+		       element2.click();
+			   element2.sendKeys("padmapandu56");
+			   Thread.sleep(2000);
+			       
+			   //click on the 'show password'    
+			   driver.findElement(By.xpath("//a[@class='showPassword']")).click();
+			   Thread.sleep(2000);
+			       
+			 //click on 'send link' button
+		        driver.findElement(By.xpath("(//a[contains(text(),'Hide')])")).click();
+		        Thread.sleep(2000);
+		        
+			   //click on the 'Login Securely' button    
+			   driver.findElement(By.xpath("(//span[contains(text(),'Login Securely')])")).click();
+			   Thread.sleep(2000);
+			   
+			   //verify link
+			   //driver.findElement(By.xpath("//button[@class='md-raised md-primary  offsetT30 mt-20 md-button ng-scope md-default-theme btn-new-other']")).click();
+			 // driver.findElement(By.xpath("//button[@ng-click='verifyOtpClick(otpData)']")).click();
+			   //driver.findElement(By.xpath("//button[@ng-if='subTheme != 'scanandpay'']")).click();
+			  // driver.findElement(By.xpath(".//*[@id='verifyOTPForm']/div/div[2]/md-content/button[1]")).click();
+			   Thread.sleep(5000);
+		       
+		       //getting the no of frames in the page.
+			   /*int size = driver.findElements(By.tagName("iframe")).size();
+		       System.out.println(size);*/
+		       Thread.sleep(5000);
+		       driver.switchTo().defaultContent();
+		       WebElement closeButton = driver.findElement(By.xpath("//a[@title='Close']"));
+		       wait.until(ExpectedConditions.visibilityOf(closeButton));
+		       closeButton.click();
+		       //driver.switchTo().defaultContent();
+		       //Moving slider on 'Book on Paytm' frame
+		       //driver.navigate().back();
+		       //driver.navigate().back();
+			    //driver.switchTo().window(windowHandle);
+		        WebElement slider = driver.findElement(By.xpath("//div[@class='mainContainer _1DB1']//div[@class='_1JVU _3pq_']//span"));
+		        int width=slider.getSize().getWidth();
+		        Actions move = new Actions(driver);
+		        org.openqa.selenium.interactions.Action action2  = move.dragAndDropBy(slider, ((width*25)/100), 0).build();
+		        action2.perform();
+		        System.out.println("Slider moved");
+		        Thread.sleep(2000);
+		       // driver.switchTo().window(windowHandle);
+		       //clicking on 'Amusement Parks'
+		       driver.findElement(By.xpath("//a[@href='https://paytm.com/amusement-parks']")).click();
+		       Thread.sleep(2000);
+		       
+		       //clicking on the cities
+		       driver.findElement(By.xpath("//i[@class='icon-location']")).click(); 
+		       
+		       //giving city name as 'Mumbai' in search box
+		       driver.findElement(By.xpath("//input[@placeholder='Enter a city name']")).sendKeys("Mumbai");
+		       Thread.sleep(2000);
+		       
+		       //clicking on the icon 'Mumbai'
+		       driver.findElement(By.xpath("//a[@href='/amusement-parks/mumbai']")).click();
+		        Thread.sleep(2000);
+		       
+		       //scrolling down to the page
+		       JavascriptExecutor js = (JavascriptExecutor) driver;
+		       js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		      
+		       //clicking on the scroll button on the right bottom of the page will get us to the top of the page
+		       driver.findElement(By.xpath("//i[@class='icon-top']")).click(); 
+		       Thread.sleep(2000);
+		       
+		       //clicking on the shop by category drop down
+		       driver.findElement(By.xpath("//i[@class='icon-hamburger _2eUq']")).click();
+		       Thread.sleep(2000);
+		       
+		       //Mouse over and clicking on the 'electronics' from the shop by category
+		       WebElement elements = driver.findElement(By.xpath("//a[@href='https://paytm.com/shop/h/electronics']"));
+			   Actions actions = new Actions(driver);
+		       actions.moveToElement(elements);
+		       actions.click();
+		       actions.build().perform();
+		       Thread.sleep(2000);
+		       
+		       //clikcing on  the 'Mobile Accessories'
+		       driver.findElement(By.xpath("//a[@href='/mobile-accessories-clpid-326?src=store&use_sf=1']")).click();
+		       Thread.sleep(2000);
+		       
+		       //clicking on the 'Mobile holders'
+		       driver.findElement(By.xpath("//a[@href='/mobile-holders-glpid-24383?use_mw=1&src=store']")).click();
+		       Thread.sleep(5000);
+		       
+		      //sliding the slider in the left side to set price range
+		     WebElement Slider = driver.findElement(By.xpath("//div[@role='slider' and @class='rc-slider-handle rc-slider-handle-1']"));////div[@class='rc-slider']
+		       wait.until(ExpectedConditions.visibilityOf(Slider));
+		       //WebElement Slider = driver.findElement(By.xpath("//div[@role='slider']"));
+		       Thread.sleep(3000);
+		       Actions moveSlider = new Actions(driver);
+		       Action actionslide= moveSlider.dragAndDropBy(Slider,40,0).build();
+		       actionslide.perform();
+		       Thread.sleep(2000);
+		       
+		       //clicking on the 'clear all' option to clear the filters applied previously
+		       WebElement clear = driver.findElement(By.xpath("//span[@class='_34iq bq4I']"));
+		       clear.click();
+		       Thread.sleep(2000);
+		       
+		       //select type as 'charging holder' 
+		       WebElement chargingHolder = driver.findElement(By.xpath("//span[text()='Charging Holder']"));
+		       chargingHolder.click();
+		       Thread.sleep(2000);
+		       
+		     //clicking on the 'clear all' option to clear the filters applied previously
+		       WebElement clear1 = driver.findElement(By.xpath("//span[@class='_34iq bq4I']"));
+		       clear1.click();
+		       Thread.sleep(2000);
+		     
+		       //clicking on 'Mobile Holder by In-Junkyard' product
+		       
+		      // String parentWindowHandler = driver.getWindowHandle(); 
+		       WebElement select = driver.findElement(By.xpath("//a[@class='_8vVO']"));
+		       select.click();
+		       Thread.sleep(2000);
+		       Set<String> windows = driver.getWindowHandles();
+		       Iterator<String> itr = windows.iterator();
+
+		       //patName will provide you parent window
+		       String patName = itr.next();
+
+		       //chldName will provide you child window
+		       String chldName = itr.next();
+
+		       //Switch to child window
+		      driver.switchTo().window(chldName);
+		       WebElement name=driver.findElement(By.xpath("//span[@class='_2oRS']"));
+		       wait.until(ExpectedConditions.visibilityOf(name));
+		       name.click();
+		       driver.findElement(By.xpath("//i[@class='iconWishlist']")).click();  
+		       Thread.sleep(5000);
+		    
+		     
+		       
+		       
+		       
+		  
+		        
+		        driver.quit();
+		        
+	}
+}
+
+		        
+
